@@ -1,0 +1,11 @@
+.comment {
+    width: 100%;
+}
+
+.comment > p {
+    text-align: left;
+}
+
+.comment > p > span {
+    font-weight: bold;
+}
