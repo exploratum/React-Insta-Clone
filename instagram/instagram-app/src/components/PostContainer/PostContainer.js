@@ -7,9 +7,11 @@ const PostContainer = (props) => {
 
     return(
         <div className = 'postContainer'>
-                {props.posts.map(post => <Post 
+                {props.posts.map(post => 
+                <Post 
                 post = {post} 
                 addNewComment = {props.addNewComment}
+                incrementLikes = {props.incrementLikes}
                 key = {post.username}
                 username = {post.username}    
                 />)}

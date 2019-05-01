@@ -34,12 +34,28 @@ class App extends React.Component {
         return post;
       }
     })
-
     //Update posts array in state
     this.setState({
       posts: posts
     });
   }
+
+  // incrementLikes = (username) => {
+  //   let updatedPost = this.state.posts.find(post => post.username === username);
+  //   updatedPost.likes ++;
+  //   console.log(updatedPost.likes);
+
+  //   let posts = this.state.posts.slice();
+  //   posts = posts.map(post => {
+  //     if (post.username === username)
+  //       return updatedPost;
+  //     else
+  //       return post
+  //   })
+
+  // }
+
+
 
   render() {
     return (
@@ -50,6 +66,7 @@ class App extends React.Component {
         <PostContainer
           posts={this.state.posts}
           addNewComment={this.addNewComment}
+          incrementLikes = {this.incrementLikes}
         />)
 
       </div>

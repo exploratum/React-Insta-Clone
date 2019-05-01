@@ -33,6 +33,17 @@
     margin-top: 10px;
 }
 
+.likes {
+    width: 100%;
+    
+
+}
+.likes > img {
+    width: 48px;
+    cursor: pointer;
+}
+
+
 .post > p {
     width: 100%;
     text-align: left;

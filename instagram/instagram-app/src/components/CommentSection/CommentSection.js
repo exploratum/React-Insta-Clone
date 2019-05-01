@@ -20,8 +20,6 @@ class CommentSection extends React.Component {
 
     handleSubmitComment = (event) => {
         event.preventDefault();
-        console.log(`new comment in commentSection is: ${this.state.newComment}`);
-        console.log(`username in CommentSection is: ${this.props.username}`)
         this.props.addNewComment(this.state.newComment, this.props.username);
         this.setState({newComment: ''});
 

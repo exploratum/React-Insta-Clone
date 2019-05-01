@@ -5,35 +5,60 @@ import CommentSection from '../CommentSection/CommentSection'
 
 
 
-const Post = (props) => {
-    console.log(`in Post username is: ${props.username}`)
-    return (
-        <div className='post'>
-            <div className = 'user'>
-                <img src={props.post.thumbnailUrl} className='thumbnail' alt='logo '></img>
-                <h2>{props.post.username}</h2>
-            </div>
+class Post extends React.Component{
 
-            <div className='image'>
-                <img src={props.post.imageUrl} alt='user'></img>
-            </div>
-            <p><span>Likes: </span>  {props.post.likes}</p>
+    constructor(props) {
+        console.log(`props.post.likes: ${props.post.likes}`)
+        super(props)
+        this.state = {
+            likes: props.post.likes
+        }
+        console.log(`this.state.likes: ${this.state.likes}`)
+    }
 
-            <CommentSection 
-            comments = {props.post.comments} 
-            timestamp = {props.post.timestamp}
-            addNewComment = {props.addNewComment}
-            username = {props.username}
-            />
-        </div>
-    )
+    //Increments likes when clicking on heart
+    handleClickHeart = () => {
+        this.setState (
+            prevState => {return {likes: prevState.likes + 1}}
+        )
+
+    }
+
+    render () {
+        return (
+            <div className='post'>
+                <div className = 'user'>
+                    <img src={this.props.post.thumbnailUrl} className='thumbnail' alt='logo '></img>
+                    <h2>{this.props.post.username}</h2>
+                </div>
+    
+                <div className='image'>
+                    <img src={this.props.post.imageUrl} alt='user'></img>
+                </div>
+                <div className="likes" >
+                    <img src="https://img.icons8.com/color/2x/hearts.png" alt="likes" onClick={this.handleClickHeart}/>
+                    <p><span>Likes: </span>  {this.state.likes}</p>
+                </div>
+                
+    
+                <CommentSection 
+                comments = {this.props.post.comments} 
+                timestamp = {this.props.post.timestamp}
+                addNewComment = {this.props.addNewComment}
+                username = {this.props.username}
+                />
+            </div>
+        )
+    }
+    
+    
 }
 
-Post.prototype = {
-    thumbnailUrl: PropTypes.string,
-    username: PropTypes.string,
-    imageUrl: PropTypes.string,
-    likes: PropTypes.number
-}
+// Post.prototype = {
+//     thumbnailUrl: PropTypes.string,
+//     username: PropTypes.string,
+//     imageUrl: PropTypes.string,
+//     likes: PropTypes.number
+// }
 
 export default Post;
