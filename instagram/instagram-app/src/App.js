@@ -9,8 +9,36 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      posts: dummyData
+      posts: []
     }
+  }
+
+  componentDidMount() {
+    this.setState({
+      posts: dummyData
+    })
+  }
+
+
+  addNewComment = (comment, username) => {
+    //Copy post to add comments from and append new comment to it
+    let newPost = this.state.posts.find(post => post.username === username);
+    newPost.comments.push({username: 'testUser', text: comment});
+
+    //Create copy of array of posts and replace the one that needs new comment
+    let posts = this.state.posts.slice();
+    posts = posts.map(post => {
+      if (post.username === username)
+        return newPost;
+      else {
+        return post;
+      }
+    })
+
+    //Update posts array in state
+    this.setState({
+      posts: posts
+    });
   }
 
   render() {
@@ -19,7 +47,10 @@ class App extends React.Component {
 
         <SearchBar />
 
-        {this.state.posts.map(post => <PostContainer post={post} key={post.id} />)}
+        <PostContainer
+          posts={this.state.posts}
+          addNewComment={this.addNewComment}
+        />)
 
       </div>
     );

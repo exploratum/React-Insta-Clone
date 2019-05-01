@@ -36,6 +36,9 @@
 .post > p {
     width: 100%;
     text-align: left;
+}
+
+.post > p > span {
     font-weight: bold;
 }
 
