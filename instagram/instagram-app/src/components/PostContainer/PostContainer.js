@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import CommentSection from '../CommentSection/CommentSection';
 import Post from './Post'
 
 
@@ -8,8 +7,14 @@ const PostContainer = (props) => {
 
     return(
         <div className = 'postContainer'>
-                <Post post = {props.post}/>
-                <CommentSection comments = {props.post.comments} timestamp = {props.post.timestamp}/>
+                {props.posts.map(post => 
+                <Post 
+                post = {post} 
+                addNewComment = {props.addNewComment}
+                incrementLikes = {props.incrementLikes}
+                key = {post.username}
+                username = {post.username}    
+                />)}
             
         </div>
     )
