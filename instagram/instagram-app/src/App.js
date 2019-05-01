@@ -9,7 +9,8 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      posts: []
+      posts: [],
+      searchedPosts: []
     }
   }
 
@@ -21,11 +22,9 @@ class App extends React.Component {
 
 
   addNewComment = (comment, username) => {
-    //Copy post to add comments from and append new comment to it
     let newPost = this.state.posts.find(post => post.username === username);
     newPost.comments.push({username: 'testUser', text: comment});
 
-    //Create copy of array of posts and replace the one that needs new comment
     let posts = this.state.posts.slice();
     posts = posts.map(post => {
       if (post.username === username)
@@ -34,39 +33,32 @@ class App extends React.Component {
         return post;
       }
     })
-    //Update posts array in state
     this.setState({
       posts: posts
     });
   }
 
-  // incrementLikes = (username) => {
-  //   let updatedPost = this.state.posts.find(post => post.username === username);
-  //   updatedPost.likes ++;
-  //   console.log(updatedPost.likes);
+  handleSearchPost = (event) => {
+    const posts = this.state.posts.filter( post => {
+      if (post.username.includes(event.target.value))
+          return post;
+    })
 
-  //   let posts = this.state.posts.slice();
-  //   posts = posts.map(post => {
-  //     if (post.username === username)
-  //       return updatedPost;
-  //     else
-  //       return post
-  //   })
-
-  // }
-
+    this.setState(
+      {searchedPosts:posts}
+    )
+  }
 
 
   render() {
     return (
       <div className="App">
 
-        <SearchBar />
+        <SearchBar handleSearchPost = {this.handleSearchPost}/>
 
         <PostContainer
-          posts={this.state.posts}
+          posts={this.state.searchedPosts.length > 0 ? this.state.searchedPosts : this.state.posts}
           addNewComment={this.addNewComment}
-          incrementLikes = {this.incrementLikes}
         />)
 
       </div>
