@@ -8,12 +8,10 @@ import CommentSection from '../CommentSection/CommentSection'
 class Post extends React.Component{
 
     constructor(props) {
-        console.log(`props.post.likes: ${props.post.likes}`)
         super(props)
         this.state = {
             likes: props.post.likes
         }
-        console.log(`this.state.likes: ${this.state.likes}`)
     }
 
     //Increments likes when clicking on heart
