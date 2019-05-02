@@ -1,6 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
-//import './Post.css'
 import CommentSection from '../CommentSection/CommentSection'
 import styled from 'styled-components'
 
@@ -103,11 +101,5 @@ class Post extends React.Component{
     
 }
 
-// Post.prototype = {
-//     thumbnailUrl: PropTypes.string,
-//     username: PropTypes.string,
-//     imageUrl: PropTypes.string,
-//     likes: PropTypes.number
-// }
 
 export default Post;
