@@ -1,6 +1,6 @@
 import React from 'react'
 import dummyData from '../../dummy-data';
-import SearchBar from '../SearchBar/SearchBar'
+import HeaderStyled from '../ComponentsStyled/HeaderStyled'
 import PostContainer from './PostContainer'
 
 
@@ -53,7 +53,7 @@ class PostsPage extends React.Component {
         return (
           <div className="App">
     
-            <SearchBar handleSearchPost = {this.handleSearchPost}/>
+            <HeaderStyled handleSearchPost = {this.handleSearchPost}/>
     
             <PostContainer
               posts={this.state.searchedPosts.length > 0 ? this.state.searchedPosts : this.state.posts}
