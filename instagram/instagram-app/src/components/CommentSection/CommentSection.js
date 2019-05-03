@@ -9,7 +9,6 @@ class CommentSection extends React.Component {
         this.state = {
             newComment: ''
         }
-        console.log(props);
     }
 
     handleCommentChange = (event) => {
